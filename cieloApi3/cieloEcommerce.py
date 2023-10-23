@@ -1,5 +1,6 @@
 
 from .request.createSale import CreateSale
+from .request.bin import Bin
 from .request.querySale import QuerySale
 from .request.updateSale import UpdateSale
 from .request.createCardToken import CreateCardToken
@@ -19,6 +20,12 @@ class CieloEcommerce(object):
         request = CreateSale(self.merchant, self.environment)
 
         return request.execute(sale)
+    
+    def bin(self, card):
+
+        request = Bin(self.merchant, self.environment)
+
+        return request.execute(card)
 
     def capture_sale(self, payment_id, amount = None, service_tax_amount = None):
         request = UpdateSale('capture', self.merchant, self.environment)

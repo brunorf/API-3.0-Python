@@ -1,6 +1,6 @@
-
 from .request.createSale import CreateSale
 from .request.bin import Bin
+from .request.zeroAuth import ZeroAuth
 from .request.querySale import QuerySale
 from .request.updateSale import UpdateSale
 from .request.createCardToken import CreateCardToken
@@ -24,6 +24,12 @@ class CieloEcommerce(object):
     def bin(self, card):
 
         request = Bin(self.merchant, self.environment)
+
+        return request.execute(card)
+    
+    def zero_auth(self, card):
+
+        request = ZeroAuth(self.merchant, self.environment)
 
         return request.execute(card)
 
